@@ -2,7 +2,7 @@
   in garbage collector system, we dont need to worry about it. It is error free (because you are not writing code to manage the memory) and gives you faster write time because you are not writing code for memory.
   cons: no control over memory, slower (because we cannot manually optimize memory) and unpredictable (garbage collector could choose to clean up memory at any point in time and when it does so it slows down our program.) runtime performance, larger program size.
 
-- in c or c++, we have to allocate and deallocate memory manually. Manual memory management.Control over memory, faster runtime, smaller program size becuase you dont need to include garbage collector. cons are error prone (many bugs and security issues are caused by incorrect memory management) and slower write time.
+- in c or c++, we have to allocate and deallocate memory manually. Manual memory management. Control over memory, faster runtime, smaller program size becuase you dont need to include garbage collector. cons are error prone (many bugs and security issues are caused by incorrect memory management) and slower write time.
 
 between garbage collection and manual memory management pros and cons are opposite. we are doing opposite tradeoffs.
 

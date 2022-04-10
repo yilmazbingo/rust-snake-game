@@ -35,7 +35,7 @@ struct Snake{
     body:Vec<SnakeCell>,
     direction:Direction,
 }
-// The impl keyword in Rust is used to implement some functionality on types.
+// The impl keyword in Rust is used to implement some functionality on types. either struct or enumfmat
 impl Snake{
     fn new(spawn_index:usize,size:usize)->Snake{
         let mut body=vec!();
@@ -117,6 +117,7 @@ impl World{
     }
 
     pub fn game_status_text(&self) -> String {
+        // match is exhaustive. means that we have to match all possible values. 
         match self.status{
             Some(GameStatus::Won)=>String::from("You have won"),
             Some(GameStatus::Lost)=>String::from("You have lost"),
