@@ -188,5 +188,50 @@ fn main(){
     let yellow=String::from("Yellow")
 
     let mut scores=HashMap::new();
+    // passign blue and yellow will move the ownership into the hashmap.
+    scores.insert(blue,10)
+    scores.insert(yellow,50)
+    // since we moved the ownership, this will throw error: we cannot borrrow a moved value
+    println!("{}",blue)
+    // if we did not want hashmap to take ownership of our string, we could pass in a reference to our string but that would require the use of lifetimes.
+
+    let team_name=String::from("Blue")
+    let score:Option<&i32>=scores.get(&team_name);
+
+    for (key,value) in &scores{
+        println!("{}:{}",key,value)
+    }
+}
+```
+
+**Updating Hashmaps**
+
+```rs
+use std::collections::HashMap;
+
+let mut scores=HashMap::new()
+
+scores.insert(String::from("Blue"),10)
+// this will overwrite the Blue key
+scores.insert(String::from("Blue",30))
+// entry gives us an entry enum that represents the value for given key.
+// or_insert is a method on returned enum. If there is no entry "Yellow", insert a new entry with value 30
+// if there is entry then do nothing
+scores.entry(String::from("Yellow")).or_insert(30)
+// since we created "Yellow" above, this will do nothing
+socres.entry(String::from("Yellow")).or_insert(40)
+
+```
+
+```rs
+fn main(){
+    let text="hello world wonderful world"
+    let mut map=HashMap::new()
+    for word in text.split_whitespaces(){
+        // if key "word" exists it wont do anything but it will return a mutable reference to count
+        let count=map.entry(word).or_insert(0);
+        // we are deferencing and adding 1
+        *count+=1
+    }
 }
 ```
