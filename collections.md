@@ -38,7 +38,6 @@ fn main(){
 ```
 
 - when we access elements in a vector we are getting a reference to that element. some ownership rules, you cannot have a immutable reference and mutable reference to the same thing at the same time.
-- when we push a new element into a vector, we might need to allocate more memory to make room for that new value. when we do that, we need to move all the elements in our vector to new memory locations. If there were happen, then our variable we declared here.
 
 ```rs
 fn main(){
@@ -48,6 +47,8 @@ fn main(){
      // we take mutable reference here
     v.push(6)
     // Error. cannot borrow 'v' as mutable because it is also borrowed as immutable.
+    // we are using immutable reference here. this is a problem cause when we have immutable reference to something we expect the underlying value not to change, but with mutable we expect that underlying value might change.
+    // when we push a new element into a vector, we might need to allocate more memory to make room for that new value. when we do that, we need to move all the elements in our vector to new memory locations. If there were happen, then our variable we declared here `let third=&v[2]` would be pointing to something else.
     println!("the third is {}",third)
 }
 ```
