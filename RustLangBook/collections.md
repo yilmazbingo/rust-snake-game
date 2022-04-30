@@ -18,6 +18,17 @@ fn main(){
 }
 ```
 
+- another way of creating vector
+
+```rs
+    let v: Vec<i32> = (0..5).collect();
+    assert_eq!(v, [0, 1, 2, 3, 4]);
+```
+
+A Vec<T> consists of three values: a pointer to the heap-allocated buffer for the elements, which is created and owned by the Vec<T> ; the number of elements that buffer has the capacity to store; and the number it actually contains now (in other words, its length). When the buffer has reached its capacity, adding another element to the vector entails allocating a larger buffer, copying the present contents into it, updating the vector’s pointer and capacity to describe the new buffer, and finally freeing the old one.
+
+If you know the number of elements a vector will need in advance, instead of `Vec::new` you can call `Vec::with_capacity` to create a vector with a buffer large enough to hold them all, right from the start; then, you can add the elements to the vector one at a time without causing any reallocation. The vec! macro uses a trick like this, since it knows how many elements the final vector will have. Note that this only establishes the vector’s initial size; if you exceed your estimate, the vector simply enlarges its storage as usual.
+
 - accessing elements in vector. there are two ways
   1- directly reference an index in the vector. the problem with this, we could specify invalid index. with arrays we know the size of the array so we get the error in compile time. But with vector we dont know the size at compile time. so accessing this way, you accept that your app might crash at run time.
 
