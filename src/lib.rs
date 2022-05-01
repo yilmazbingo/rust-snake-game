@@ -1,4 +1,6 @@
+// facilitate high-level interactions between wasm modules and JavaScript
 use wasm_bindgen::prelude::*;
+// by default rust uses [global_allocator] for memory. instead we are using this library
 use wee_alloc::WeeAlloc;
 // wasm-pack build --target web
 #[global_allocator]
@@ -29,9 +31,9 @@ pub enum GameStatus{
 }
 //The derive attribute allows new items to be automatically generated for data structures.
 #[derive(PartialEq,Clone,Copy)]
+// this is tuple-like structs
 pub struct SnakeCell(usize);
 struct Snake{
-    // Vector is resizable array in rust
     body:Vec<SnakeCell>,
     direction:Direction,
 }

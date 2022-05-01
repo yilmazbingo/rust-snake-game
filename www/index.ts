@@ -3,8 +3,10 @@ import init, { World, Direction, GameStatus } from "snake_game";
 import { rnd } from "./utils/rnd";
 
 init().then((wasm) => {
+  // wasm will give you all of the pub defined data in rust
+  console.log("wasm", wasm);
   const CELL_SIZE = 20; // this is inpx
-  const WORLD_WIDTH = 4;
+  const WORLD_WIDTH = 8;
   const snakeSpawnIdx = rnd(WORLD_WIDTH * WORLD_WIDTH);
 
   const world = World.new(WORLD_WIDTH, snakeSpawnIdx);

@@ -197,7 +197,7 @@ fn dangle() -> String{
 
 ## Slices
 
-Slices lets you reference a contiguous sequence of elements within a collection instead of referencing the entire collection. Slices do not take the ownership of the underlying the data.
+Slices lets you reference a contiguous sequence of elements within a collection instead of referencing the entire collection. Slices do not take the ownership of the underlying the data. Since a slice can be any length, slices can’t be stored directly in variables or passed as function arguments. Slices are always passed by reference.
 
 ```rs
 fn first_word(s: &String) -> usize {

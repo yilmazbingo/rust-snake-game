@@ -115,12 +115,14 @@ fn main(){
 - Ascii is a string encoding, it defines how to take 1's and 0's and turn it into a string, or take a string and turn it into ones and zeroes. the problem is each asci character is stored as a byte and only 7 bits of that byte are used to represent the character. that means ascii can represent only 128 unique characters and so ascii only represents english alphabet some special characters and a few commands.
 - to encode all the chars in all languages, `unicode` is created. Universal Character Set. Unicode is backwards compatible with ascii and that is because the first 128 symbols of unicode are ascii characters.
 - utf-8 is a variable-width character encoding for unicode. Variable-width because each character in utf-8 could be represented as one byte,two bytes etc. remember in ascii each character is represented by 1 byte but with utf-8, each character could be different size in terms of bytes.
+- You can think of a String as a Vec<u8> that is guaranteed to hold well-formed UTF-8; in fact, this is how String is implemented.
 
 ```rs
 fn main(){
     // empty string
     let s1:String=String::new();
     let s2:&str="initial contents";
+    // to_string() is to get heap-allocated String values.
     let s3:String=s2.to_string();
     let s4:String=String::from("initial contents")
 }
