@@ -17,6 +17,8 @@
     }
 ```
 
+-
+
 ## Borrow Checker
 
 The Rust compiler has a borrow checker that compares scopes to determine whether all borrows are valid in compile time.
